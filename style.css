@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body{
+    background-color: rgb(55, 59, 62);
+    color: rgb(244, 225, 225);
+    font-size: 20px;
+}
+
+.head{
+    text-align: center;
+    color: rgb(46, 39, 39);
+    padding: 1rem;
+    background-color: rgb(211, 211, 166);
+}
+
+.add{
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    height: 3rem;   
+}
+
+#addinput{
+    width: 100%;
+    background: none;
+    border: 2.5px solid rgb(56, 51, 51);
+    outline: none;
+    text-align: center;
+    padding:0.5rem 1rem;
+    color: rgb(89, 79, 79);
+    font-size: 1.5rem;
+}
+#addbutton{
+    width:100%;
+    background-color: rgb(189, 214, 224);
+    text-align: center;
+    border: 2.5px solid rgb(56, 51, 51);
+    padding:0.5rem 1rem;
+    color: rgb(89, 79, 79);
+    font-size: 1.5rem;
+
+}
+
+.todos{
+    border: 1px solid rgb(135, 129, 129);
+    padding: 0.5rem 0.8rem 0.5rem 1rem;
+    font-size: 1.5rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.check{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+.delete{
+    background:none;
+}
