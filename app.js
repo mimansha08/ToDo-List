@@ -4,7 +4,7 @@ const Model = () => {
       addTodo: function(name){
         const todo={
           name,
-          id:Math.random().toString(16).slice(2),
+          id:Math.random().toString(16).slice(2), //ok
           isComplete:false
         }
         list.push(todo);
