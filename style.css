@@ -55,11 +55,40 @@ body{
     justify-content: space-between;
 }
 
+.todos.done{
+    background-color: rgba(0, 255, 0, 0.25);
+}
+
+.todos.editing{
+   background-color: rgba(255, 255, 255, 0.447);
+}
+
+.todos:not(.editing) .edit{
+    display:none;
+}
+
+.todos.editing .name{
+    display:none;
+}
+
+.todos.editing .edit-btn{
+    display:none;
+}
+
+.todos:not(.editing) .save-btn{
+    display:none;
+}
+
 .check{
     display: flex;
     flex-direction: row;
     gap: 3rem;
 }
-.delete{
+.delete,.edit-btn,.save-btn{
     background:none;
+}
+
+.edit{
+    padding: 0.5rem;
+    font-style: italic;
 }

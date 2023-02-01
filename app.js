@@ -44,6 +44,12 @@ const Model = () => {
       loadfromlocal: function(){
         let tasks=JSON.parse(localStorage.getItem("tasks")) ||[];
         list=tasks;
+      },
+
+      updateTodo: function(id,name){
+        const reqTodo=list.find((todo)=>todo.id==id);
+        reqTodo.name=name;
+        localStorage.setItem("tasks",JSON.stringify(list));
       }
 
     }
@@ -54,12 +60,16 @@ const Model = () => {
 const View = () => {
   function getTodoHtmlString(todo){
     return `
-      <div class="todos">
-        <div>${todo.name}</div>
-        
+      <div class="todos ${todo.isComplete?"done":""}">
+        <div class="name">${todo.name}</div>
+        <input class="edit" type="text" value="${todo.name}">
         <div class="check">
+        <button class="edit-btn" onclick="onEdit(event)" >🖊️</button>
+        <button class="save-btn" onclick="onSaving(event)" data-tdid="${todo.id}">✔️</button>
         <button class="delete" onclick="onDeletion(event)" data-tdid="${todo.id}">🗑️</button>
-        <input type="checkbox" onchange="onInputChange(event)" data-tdid="${todo.id}" ${todo.isComplete?"checked":""}></div>
+        <input type="checkbox" onchange="onInputChange(event)" data-tdid="${todo.id}" ${todo.isComplete?"checked":""}>
+        
+        </div>
       </div>
     
     `
@@ -110,4 +120,16 @@ function onDeletion(e){
   model.delTodo(id);
   view.showTodoList(model.getTodoList());
 }
-//good
+
+function onEdit(e){
+  const todoEl=e.target.closest(".todos");
+  todoEl.classList.add("editing");
+}
+
+function onSaving(e){
+  const todoEl=e.target.closest(".todos");
+  todoEl.classList.remove("editing");
+  const inputEl=todoEl.querySelector(".edit");
+  model.updateTodo(e.target.getAttribute("data-tdid"),inputEl.value);
+  view.showTodoList(model.getTodoList());
+}
